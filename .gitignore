@@ -1,0 +1,63 @@
+# --- Компилируемые выходные файлы ---
+*.obj
+*.o
+*.exe
+*.out
+*.dll
+*.lib
+*.so
+*.a
+*.exp
+*.pdb
+
+# --- Каталоги сборки Visual Studio ---
+Debug/
+Release/
+x64/
+x86/
+ipch/
+*.vc.db
+*.VC.db
+*.VC.opendb
+
+# --- Файлы среды Visual Studio ---
+.vs/
+*.user
+*.suo
+*.ncb
+*.log
+*.sdf
+*.opensdf
+*.tlog/
+*.idb
+
+# --- Кэш CMake (если используешь) ---
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# --- Временные файлы и тестовые артефакты ---
+*.tmp
+*.temp
+*.log
+*.cache
+*.bak
+*.old
+*.orig
+
+# --- Артефакты модульных тестов ---
+*.testlog
+*.TestResult.xml
+
+# --- Тестовые временные файлы ---
+temp_input.txt
+temp_output.txt
+
+# --- IDE специфичные ---
+.idea/
+*.code-workspace
+
+# --- OS системные ---
+.DS_Store
+Thumbs.db
