@@ -3,9 +3,16 @@
 #include <sstream>
 #include <vector>
 #include <cctype>
+#include <windows.h>
 using namespace std;
 
-// Проверка, что строка содержит только цифры и пробелы
+/**
+ * @brief Проверяет, содержит ли строка только допустимые символы: цифры, пробелы.
+ *
+ * @param line Строка для проверки.
+ *
+ * @return true, если строка допустима (содержит только цифры и пробелы); false — иначе.
+ */
 bool isValidLine(const string& line) {
     for (char ch : line) {
         if (!isdigit(ch) && !isspace(ch)) {
@@ -15,7 +22,25 @@ bool isValidLine(const string& line) {
     return true;
 }
 
-// Проверка корректности входного файла
+/**
+ * @brief Проверяет и считывает данные из входного потока.
+ *
+ * Валидирует формат строки, количество строк, допустимость символов,
+ * количество чисел и диапазон значений. При успешной валидации заполняет
+ * вектор чисел из строки.
+ *
+ * @param inputFile Входной поток (например, std::ifstream input("input.txt")).
+ * @param outputFile Выходной поток для сообщений об ошибках (например, std::ofstream).
+ * @param sequence Вектор, в который будут сохранены целые неотрицательные числа.
+ *
+ * @return int Код завершения:
+ *         - 0 — успешно
+ *         - 3 — пустой файл
+ *         - 4 — более одной строки
+ *         - 5 — недопустимые символы или отрицательные числа
+ *         - 6 — менее двух чисел
+ *         - 7 — более 1000 чисел
+ */
 int validateInput(ifstream& inputFile, ofstream& outputFile, vector<int>& sequence) {
 
     // Считываем все строки из входного файла
@@ -69,7 +94,17 @@ int validateInput(ifstream& inputFile, ofstream& outputFile, vector<int>& sequen
     return 0; // Успех
 }
 
-// Проверка, что последовательность — числа Фибоначчи
+/**
+ * @brief Проверяет, является ли последовательность числами Фибоначчи.
+ *
+ * Последовательность должна быть такой, что каждый элемент начиная с третьего
+ * равен сумме двух предыдущих.
+ *
+ * @param sequence Последовательность целых чисел (уже проверена на валидность).
+ * @param errorIndex Индекс первого элемента, нарушающего последовательность Фибоначчи.
+ *
+ * @return true, если последовательность корректна по Фибоначчи; false — иначе.
+ */
 bool isFibonacciSequence(const vector<int>& sequence, int& errorIndex) {
 
     // Проверяем первые два числа
@@ -94,10 +129,26 @@ bool isFibonacciSequence(const vector<int>& sequence, int& errorIndex) {
     return true;
 }
 
-int main() {
+/**
+ * @brief Основная функция программы.
+ *
+ * Считывает данные из входного файла, создает выходной файл,
+ * проверяет существование входного и выходного файлов,
+ * вызывает функции validateInput и isFibonacciSequence
+ *
+ */
+int main(int argc, char* argv[]) {
+    SetConsoleOutputCP(65001);
     setlocale(LC_ALL, "Russian");
-    ifstream inputFile("C:/Users/Daniil2/source/repos/FibonacciNumbers/input.txt");
-    ofstream outputFile("C:/Users/Daniil2/source/repos/FibonacciNumbers/output.txt");
+
+    string inputFilePath = "input.txt";
+    string outputFilePath = "output.txt";
+
+    if (argc >= 2) inputFilePath = argv[1];
+    if (argc >= 3) outputFilePath = argv[2];
+
+    ifstream inputFile(inputFilePath);
+    ofstream outputFile(outputFilePath);
     
     // Ошибка 1: входной файл не существует
     if (!inputFile) {
