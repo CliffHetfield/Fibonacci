@@ -1,7 +1,7 @@
 # Fibonacci Sequence Validator
 ## Эксплуатационная документация
 
-**Программа:** fibonacci.exe **Версия:** 1.0 **Дата:** 2025-06-21
+**Программа:** FibonacciNumbers.exe **Версия:** 1.0 **Дата:** 2025-06-21
 
 ### Содержание
 
@@ -38,8 +38,9 @@
 │   ├─ FibonacciNumbers.cpp
 │   ├─ FibonacciNumbers.sln
 │   ├─ MyClass.h
-├─ tests/          # модульные тесты (Visual Studio CppUnitTest)
-├─ scripts/        # скрипты сборки и тестирования (батники)
+├─ Doxygen/         # Doxygen документация
+├─ Test_FibonacciNumbers/          # модульные тесты (Visual Studio CppUnitTest)
+├─ bat/        # скрипты сборки и тестирования (батники)
 ```
 
 
@@ -156,6 +157,7 @@ FibonacciNumbers.exe [input.txt] [output.txt]
 ### 9. Тестирование
 
 * Модульные тесты на базе Microsoft UnitTest для FibonnaciNumbers.
+* Скрипты .bat для пакетного запуска тестов по разным *.txt.
 
 ### 10. Руководство программиста
 
